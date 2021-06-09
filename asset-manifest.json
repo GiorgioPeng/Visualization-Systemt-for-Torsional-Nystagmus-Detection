@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/css/main.b62a01ae.chunk.css",
-    "main.js": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/main.71908161.chunk.js",
-    "main.js.map": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/main.71908161.chunk.js.map",
+    "main.js": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/main.76d3e8ee.chunk.js",
+    "main.js.map": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/main.76d3e8ee.chunk.js.map",
     "runtime-main.js": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/runtime-main.ddbe75f6.js",
     "runtime-main.js.map": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/runtime-main.ddbe75f6.js.map",
     "static/css/2.3c3a73a9.chunk.css": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/css/2.3c3a73a9.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.3c3a73a9.chunk.css",
     "static/js/2.79530075.chunk.js",
     "static/css/main.b62a01ae.chunk.css",
-    "static/js/main.71908161.chunk.js"
+    "static/js/main.76d3e8ee.chunk.js"
   ]
 }
