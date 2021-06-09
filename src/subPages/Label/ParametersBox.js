@@ -4,30 +4,36 @@ import { useGlobalState } from '../../globalState'
 import RecordAddTable from '../../components/RecordAddTable'
 import './ParamtersBox.css'
 // 这个组件用于设置添加的新的记录的各个值
-function ParametersBox(props) {
+function ParametersBox() {
     const [state, updateState] = useGlobalState()
-    const [tempRecord, setTempRecord] = React.useState(
-        {
-            key: '',
-            start: '',
-            end: '',
-            nystagmus: '',
-            method: '',
-            rotate: '',
-            direction: '',
-            speed: '',
-        },
-    );
+    const initTempRecord = {
+        key: '',
+        start: '',
+        end: '',
+        nystagmus: '',
+        method: '',
+        rotate: '',
+        direction: '',
+        speed: '',
+    }
+
+    const resetTempRecord = ()=>{
+        setTempRecord(initTempRecord)
+    }
+    const [tempRecord, setTempRecord] = React.useState(initTempRecord);
+
     const addRecord = () => {
         let temp = [...state.records]
+        console.log(tempRecord)
         Object.getOwnPropertyNames(tempRecord).every(e => tempRecord[e] !== '') ?
             temp.push(tempRecord) : alert('有空值,添加失败')
         updateState('records', temp)
+        resetTempRecord()
     }
 
     // type参数用于说明是记录开始时间还是结束时间
     const timeRecord = (type, time) => {
-        time = type==='start'?'0:22':'0:30' //这里先随便弄个时间
+        time = type === 'start' ? '0:22' : '0:30' //这里先随便弄个时间
 
         setTempRecord(() => {
             return {
@@ -47,7 +53,7 @@ function ParametersBox(props) {
             <Divider />
             <RecordAddTable tempRecord={tempRecord}
                 newKey={state.records.length + 1}
-                setTempRecord={setTempRecord}/>
+                setTempRecord={setTempRecord} />
             <Divider>⬆️ 正在添加｜所有记录 ⬇️</Divider>
         </div>
     )

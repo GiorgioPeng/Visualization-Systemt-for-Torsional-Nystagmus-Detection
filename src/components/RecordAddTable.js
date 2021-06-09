@@ -7,39 +7,45 @@ import paramtersValue from '../assets/data.json' // 导入给定的参数们
 const { Option } = Select;
 
 function RecordAddTable(props) {
-    const [state, ] = useGlobalState()
+    const [state,] = useGlobalState()
     const columns = state.tableHeader
     const { tempRecord, setTempRecord, newKey } = props;
-    React.useEffect(() =>{
+    React.useEffect(() => {
         setTempRecord(() => {
             return {
                 ...tempRecord,
                 'key': newKey
             }
         });
-    },[newKey])
-    const handleChange = (newValue, key) => {
-        let label = ''
+    }, [newKey, state])
+
+    const keyTranslate = (key) => {
+        let resultKey = ''
         switch (key) {
             case '检查方式':
-                label = 'method'
+                resultKey = 'method'
                 break
             case '眼震':
-                label = 'nystagmus'
+                resultKey = 'nystagmus'
                 break
             case '旋转':
-                label = 'rotate'
+                resultKey = 'rotate'
                 break
             case '方向':
-                label = 'direction'
+                resultKey = 'direction'
                 break
             case '速度':
-                label = 'speed'
+                resultKey = 'speed'
                 break
             default:
-                label = ''
+                resultKey = ''
                 break
         }
+        return resultKey
+    }
+
+    const handleChange = (newValue, key) => {
+        let label = keyTranslate(key)
         if (label === '')
             return
         setTempRecord(() => {
@@ -57,13 +63,13 @@ function RecordAddTable(props) {
                 })
             }
             {
-                columns.map((element,index) => {
+                columns.map((element, index) => {
                     let tempColumnValues = paramtersValue.filter(i => i.label === element.title) // 拿出对应的列的可选参数
                     return tempColumnValues.length === 0 ?
-                        <div key={element.title} style={{ width: 120, justifySelf: 'center' }}>{index===0?tempRecord['start']:tempRecord['end']}</div>
+                        <div key={element.title} style={{ width: 120, justifySelf: 'center' }}>{index === 0 ? tempRecord['start'] : tempRecord['end']}</div>
                         :
-                        <Select key={element.title} style={{ width: 120, justifySelf: 'center' }} onChange={(value) => handleChange(value, element.title)}>
-                            {tempColumnValues[0].values.map((i, index) => <Option key={index} value={i.value} >{i.value}</Option>)}
+                        <Select key={element.title} style={{ width: 120, justifySelf: 'center' }} onSelect={(value) => handleChange(value, element.title)}>
+                            {tempColumnValues[0].values.map((i, index) => <Option key={index} value={i.value} >{tempRecord[keyTranslate(element.title)] === '' ? '' : i.value}</Option>)}
                         </Select>
                 })
             }
