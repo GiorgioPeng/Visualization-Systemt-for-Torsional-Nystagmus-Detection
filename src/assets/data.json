@@ -1,0 +1,170 @@
+[
+  {
+    "label": "检查方式",
+    "values": [
+      {
+        "value": "自发眼震"
+      },
+      {
+        "value": "左水平凝视诱发"
+      },
+      {
+        "value": "右水平凝视诱发"
+      },
+      {
+        "value": "上向凝视诱发"
+      },
+      {
+        "value": "俯卧位位置眼震"
+      },
+      {
+        "value": "摇头试验"
+      },
+      {
+        "value": "悬头试验(躺下)"
+      },
+      {
+        "value": "悬头试验(坐起)"
+      },
+      {
+        "value": "左侧DixHallpike检查(躺下)"
+      },
+      {
+        "value": "左侧DixHallpike检查(坐起)"
+      },
+      {
+        "value": "右侧DixHallpike检查(躺下)"
+      },
+      {
+        "value": "右侧DixHallpike检查(坐起)"
+      },
+      {
+        "value": "左ROLL"
+      },
+      {
+        "value": "右ROLL"
+      },
+      {
+        "value": "坐位低头"
+      },
+      {
+        "value": "坐位仰头"
+      },
+      {
+        "value": "左水平凝视回原位"
+      },
+      {
+        "value": "右水平凝视回原位"
+      },
+      {
+        "value": "平卧位位置眼震"
+      },
+      {
+        "value": "左侧卧位位置眼震"
+      },
+      {
+        "value": "右侧卧位位置眼震"
+      },
+      {
+        "value": "Valsava诱发眼震"
+      },
+      {
+        "value": "过度换气诱发眼震"
+      },
+      {
+        "value": "Hennebert诱发眼震"
+      }
+    ],
+    "result": ""
+  },
+  {
+    "label": "眼震",
+    "values": [
+      {
+        "value": "急跳性眼震"
+      },
+      {
+        "value": "钟摆性眼震"
+      },
+      {
+        "value": "方波急跳眼震"
+      },
+      {
+        "value": "反跳眼震"
+      }
+    ],
+    "result": ""
+  },
+  {
+    "label": "旋转",
+    "values": [
+      {
+        "value": "纯旋转"
+      },
+      {
+        "value": "旋转"
+      }
+    ],
+    "result": ""
+  },
+  {
+    "label": "方向",
+    "values": [
+      {
+        "value": "水平左侧"
+      },
+      {
+        "value": "水平右侧"
+      },
+      {
+        "value": "垂直上向"
+      },
+      {
+        "value": "垂直下向"
+      },
+      {
+        "value": "左上"
+      },
+      {
+        "value": "右上"
+      },
+      {
+        "value": "水平方波"
+      },
+      {
+        "value": "垂直方波"
+      },
+      {
+        "value": "左下"
+      },
+      {
+        "value": "右下"
+      },
+      {
+        "value": "顺时针旋转"
+      },
+      {
+        "value": "逆时针旋转"
+      }
+    ],
+    "result": ""
+  },
+  {
+    "label": "速度",
+    "values": [
+      {
+        "value": "恒定"
+      },
+      {
+        "value": "递增"
+      },
+      {
+        "value": "递减"
+      },
+      {
+        "value": "递增-递减"
+      }
+    ],
+    "result": ""
+  }
+]

@@ -1,7 +1,6 @@
 import React from 'react'
-import { Upload, message, Button } from 'antd';
+import { Upload, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
-import './CustomerDragger.css'
 const { Dragger } = Upload;
 
 function CustomerDragger() {
@@ -38,11 +37,6 @@ function CustomerDragger() {
                     band files
             </p>
             </Dragger>
-            <div className="ButtonGroup">
-            <Button type="primary" shape="round">开始</Button>
-            <Button type="primary" shape="round" danger>结束</Button>
-            <Button type="dashed" shape="round">添加选项</Button>
-            </div>
         </>
     )
 }
