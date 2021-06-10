@@ -1,7 +1,6 @@
 import React from 'react'
 import { Table } from 'antd';
 import { useGlobalState } from '../../globalState'
-import useForceUpdate from '../../components/useForceUpdate'
 
 function DataTable() {
     const [state,] = useGlobalState()

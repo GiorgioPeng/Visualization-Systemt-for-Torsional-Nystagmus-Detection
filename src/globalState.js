@@ -41,7 +41,8 @@ const initState = {
             key: 'speed',
         }
     ],
-    // 这里防止初始状态
+    videoFile:null,
+    // 这里放置初始状态
 };
 export function GlobalStateProvider({ children }) {
     const [state, setState] = useState(initState);
