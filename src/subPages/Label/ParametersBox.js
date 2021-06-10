@@ -4,7 +4,8 @@ import { useGlobalState } from '../../globalState'
 import RecordAddTable from '../../components/RecordAddTable'
 import './ParamtersBox.css'
 // 这个组件用于设置添加的新的记录的各个值
-function ParametersBox() {
+function ParametersBox(props) {
+    const {videoRef} = props
     const [state, updateState] = useGlobalState()
     const initTempRecord = {
         key: '',
@@ -32,13 +33,11 @@ function ParametersBox() {
     }
 
     // type参数用于说明是记录开始时间还是结束时间
-    const timeRecord = (type, time) => {
-        time = type === 'start' ? '0:22' : '0:30' //这里先随便弄个时间
-
+    const timeRecord = (type) => {
         setTempRecord(() => {
             return {
                 ...tempRecord,
-                [type]: time,
+                [type]: videoRef.current?.video.props.player.currentTime,
             }
         });
     }
@@ -46,8 +45,8 @@ function ParametersBox() {
         <div>
             <Divider />
             <div className="ButtonGroup">
-                <Button type="primary" shape="round" onClick={() => timeRecord('start', 1)}>眼震开始</Button>
-                <Button type="primary" shape="round" danger onClick={() => timeRecord('end', 1)}> 眼震结束</Button>
+                <Button type="primary" shape="round" onClick={() => timeRecord('start')}>眼震开始</Button>
+                <Button type="primary" shape="round" danger onClick={() => timeRecord('end')}> 眼震结束</Button>
                 <Button type="dashed" shape="round" onClick={addRecord}>添加一行记录</Button>
             </div>
             <Divider />

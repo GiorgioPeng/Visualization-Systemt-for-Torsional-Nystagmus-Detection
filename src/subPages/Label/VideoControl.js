@@ -13,7 +13,8 @@ import {
 import "../../../node_modules/video-react/dist/video-react.css";
 import { useGlobalState } from '../../globalState'
 
-function VideoControl() {
+function VideoControl(props) {
+    const { videoRef } = props
     const [state,] = useGlobalState()
     const getObjectURL = (file) => {
         let url = null;
@@ -35,6 +36,7 @@ function VideoControl() {
                         // poster="https://video-react.js.org/assets/poster.png"
                         fluid={true}
                         autoPlay={true}
+                        ref={videoRef}
                     >
                         <source
                             src={getObjectURL(state.videoFile.originFileObj)}
@@ -56,7 +58,7 @@ function VideoControl() {
                         </ControlBar>
                     </Player>
                     :
-                    <b style={{fontSize:'40px'}}>未上传视频</b>
+                    <b style={{ fontSize: '40px' }}>未上传视频</b>
             }
         </div>
     )
