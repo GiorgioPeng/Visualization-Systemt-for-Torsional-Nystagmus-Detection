@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/css/main.b62a01ae.chunk.css",
-    "main.js": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/main.566918af.chunk.js",
-    "main.js.map": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/main.566918af.chunk.js.map",
-    "runtime-main.js": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/runtime-main.d046453c.js",
-    "runtime-main.js.map": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/runtime-main.d046453c.js.map",
+    "main.js": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/main.10bd73d9.chunk.js",
+    "main.js.map": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/main.10bd73d9.chunk.js.map",
+    "runtime-main.js": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/runtime-main.9743f490.js",
+    "runtime-main.js.map": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/runtime-main.9743f490.js.map",
     "static/css/2.d52b85da.chunk.css": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/css/2.d52b85da.chunk.css",
-    "static/js/2.e69e8974.chunk.js": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/2.e69e8974.chunk.js",
-    "static/js/2.e69e8974.chunk.js.map": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/2.e69e8974.chunk.js.map",
-    "static/js/3.3aaf4f83.chunk.js": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/3.3aaf4f83.chunk.js",
-    "static/js/3.3aaf4f83.chunk.js.map": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/3.3aaf4f83.chunk.js.map",
+    "static/js/2.6101430a.chunk.js": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/2.6101430a.chunk.js",
+    "static/js/2.6101430a.chunk.js.map": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/2.6101430a.chunk.js.map",
+    "static/js/3.2099ce6c.chunk.js": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/3.2099ce6c.chunk.js",
+    "static/js/3.2099ce6c.chunk.js.map": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/3.2099ce6c.chunk.js.map",
     "index.html": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/index.html",
     "static/css/2.d52b85da.chunk.css.map": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/css/2.d52b85da.chunk.css.map",
     "static/css/main.b62a01ae.chunk.css.map": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/css/main.b62a01ae.chunk.css.map",
-    "static/js/2.e69e8974.chunk.js.LICENSE.txt": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/2.e69e8974.chunk.js.LICENSE.txt"
+    "static/js/2.6101430a.chunk.js.LICENSE.txt": "/Visualization-Systemt-for-Torsional-Nystagmus-Detection/static/js/2.6101430a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.d046453c.js",
+    "static/js/runtime-main.9743f490.js",
     "static/css/2.d52b85da.chunk.css",
-    "static/js/2.e69e8974.chunk.js",
+    "static/js/2.6101430a.chunk.js",
     "static/css/main.b62a01ae.chunk.css",
-    "static/js/main.566918af.chunk.js"
+    "static/js/main.10bd73d9.chunk.js"
   ]
 }
