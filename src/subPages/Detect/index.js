@@ -1,9 +1,13 @@
 import React from 'react'
-
+import VideoContainer from './VideoContainer'
+import DetectTable from './DetectTable'
+import DetectButtons from './DetectButtons'
 function index() {
     return (
         <div>
-            这里是侦测界面
+            <VideoContainer />
+            <DetectTable />
+            <DetectButtons />
         </div>
     )
 }
