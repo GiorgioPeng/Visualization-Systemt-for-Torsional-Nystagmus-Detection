@@ -1,10 +1,11 @@
 import React, { useState, createContext, useContext, } from 'react';
+import { Button, Space } from 'antd'
 // 提供全局状态
 const GloalStateContext = createContext(null)
 
 const initState = {
     records: [],
-    tableHeader: [
+    labelTableHeader: [
         {
             title: '开始时间',
             dataIndex: 'start',
@@ -41,7 +42,29 @@ const initState = {
             key: 'speed',
         }
     ],
-    videoFile:null,
+    detectTableHeader: [
+        {
+            title: '起始时间',
+            dataIndex: 'start',
+            key: 'start',
+        },
+        {
+            title: '终止时间',
+            dataIndex: 'end',
+            key: 'end',
+        },
+        {
+            title: '操作',
+            dataIndex: 'operation',
+            key: 'operation',
+            render: (text, record) => (
+                <Space size="middle">
+                    <Button> {record.operation}</Button>
+                </Space>
+            ),
+        }
+    ],
+    videoFile: null,
     // 这里放置初始状态
 };
 export function GlobalStateProvider({ children }) {

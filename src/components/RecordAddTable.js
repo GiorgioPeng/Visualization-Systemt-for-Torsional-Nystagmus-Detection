@@ -8,7 +8,7 @@ const { Option } = Select;
 
 function RecordAddTable(props) {
     const [state,] = useGlobalState()
-    const columns = state.tableHeader
+    const columns = state.labelTableHeader
     const { tempRecord, setTempRecord, newKey } = props;
     React.useEffect(() => {
         setTempRecord(() => {

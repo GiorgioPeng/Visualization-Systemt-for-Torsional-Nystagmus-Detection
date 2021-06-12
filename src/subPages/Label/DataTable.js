@@ -4,7 +4,7 @@ import { useGlobalState } from '../../globalState'
 
 function DataTable() {
     const [state,] = useGlobalState()
-    const columns = state.tableHeader
+    const columns = state.labelTableHeader
     return (
         <Table columns={columns}  dataSource={state.records} />
     )

@@ -1,87 +1,33 @@
 import React from 'react'
 import { Table, Divider } from 'antd';
+import {useGlobalState} from '../../globalState'
 function DetectTable() {
-    const columns = [
-        {
-            title: 'Name',
-            dataIndex: 'name',
-            filters: [
-                {
-                    text: 'Joe',
-                    value: 'Joe',
-                },
-                {
-                    text: 'Jim',
-                    value: 'Jim',
-                },
-                {
-                    text: 'Submenu',
-                    value: 'Submenu',
-                    children: [
-                        {
-                            text: 'Green',
-                            value: 'Green',
-                        },
-                        {
-                            text: 'Black',
-                            value: 'Black',
-                        },
-                    ],
-                },
-            ],
-            // specify the condition of filtering result
-            // here is that finding the name started with `value`
-            onFilter: (value, record) => record.name.indexOf(value) === 0,
-            sorter: (a, b) => a.name.length - b.name.length,
-            sortDirections: ['descend'],
-        },
-        {
-            title: 'Age',
-            dataIndex: 'age',
-            defaultSortOrder: 'descend',
-            sorter: (a, b) => a.age - b.age,
-        },
-        {
-            title: 'Address',
-            dataIndex: 'address',
-            filters: [
-                {
-                    text: 'London',
-                    value: 'London',
-                },
-                {
-                    text: 'New York',
-                    value: 'New York',
-                },
-            ],
-            onFilter: (value, record) => record.address.indexOf(value) === 0,
-        },
-    ];
-
+    const [state,] = useGlobalState()
+    const columns = state.detectTableHeader
     const data = [
         {
             key: '1',
-            name: 'John Brown',
-            age: 32,
-            address: 'New York No. 1 Lake Park',
+            start:'0:30',
+            end:'0:31',
+            operation:'跳转'
         },
         {
             key: '2',
-            name: 'Jim Green',
-            age: 42,
-            address: 'London No. 1 Lake Park',
+            start:'0:40',
+            end:'0:45',
+            operation:'跳转'
         },
         {
             key: '3',
-            name: 'Joe Black',
-            age: 32,
-            address: 'Sidney No. 1 Lake Park',
+            start:'0:58',
+            end:'0:59',
+            operation:'跳转'
         },
         {
             key: '4',
-            name: 'Jim Red',
-            age: 32,
-            address: 'London No. 2 Lake Park',
+            start:'1:40',
+            end:'1:45',
+            operation:'跳转'
         },
     ];
     return (
