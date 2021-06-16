@@ -3,7 +3,7 @@ import { Button } from 'antd'
 
 function DetectButtons(props) {
     const { setButtonState } = props
-    const buttons = ['去除无效帧', '对标', '显示光流']
+    const buttons = ['','去除无效帧', '对标', '显示光流']
     const handleClick = (index) => {
         // 这里后期还要加上后端是否成功返回的判断逻辑，这里先进行简化了
         setButtonState((lastState) => {

@@ -1,13 +1,12 @@
 import React from 'react'
-import { Row, Col, Card, Collapse, Space } from 'antd'
+import { Row, Col, Card, Button } from 'antd'
 import VideoPlayer from '../../components/VideoPlayer'
-import DetectButtons from './DetectButtons'
+// import DetectButtons from './DetectButtons'
 
-const { Panel } = Collapse;
-const { Meta } = Card;
 function VideoContainer() {
     const [loading, setLoading] = React.useState(false) // 后期判断后端是否把视频传过来时使用这个状态
-    const videoGroup = ['去无效帧后的视频', '对标后视频', '光流视频']
+    const videoGroup = ['原始视频', '去无效帧后的视频', '进行对标后视频', '显示光流后视频']
+    const buttons = ['', '去除无效帧', '进行对标', '显示光流']
     const [buttonState, setButtonState] = React.useState(
         {
             1: false,
@@ -18,34 +17,27 @@ function VideoContainer() {
     // 这里等着后端传视频url等参数才能继续，先放在这里占着位置
     return (
         <div>
-            <Card
-                hoverable
-                style={{ width: '100%', cursor: 'default' }}
-                loading={loading}
-            >
-                <Meta
-                    title={'原始视频'}
-                    style={{ textAlign: 'center' }}
-                />
-                <VideoPlayer />
-            </Card>
-            <DetectButtons setButtonState={setButtonState} />
-            {
-                videoGroup.map((title, index) =>
-                    <Collapse style={{ width: '100%', marginTop: '10px' }} key={index} collapsible={buttonState[index] ? '' : 'disabled'}>
-                        <Panel header={title} key={index}>
+            <Row gutter={[16, 16]}>
+                {
+                    videoGroup.map((title, index) =>
+                        <Col span={12} key={index}>
+                            {/* <b>{title}</b> */}
                             <Card
                                 hoverable
-                                style={{ width: '100%', cursor: 'default' }}
+                                style={{ width: '100%', cursor: 'default', textAlign: 'center' }}
                                 loading={loading}
+                                title={title}
+                                extra={<Button size="small" type="primary">{buttons[index]}</Button>}
                             >
                                 <VideoPlayer />
                             </Card>
-
-                        </Panel>
-                    </Collapse>
-                )
-            }
+                        </Col>
+                    )
+                }
+            </Row>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}>
+                <Button size='large' type='primary' danger>进行检测</Button>
+            </div>
         </div>
     )
 }
