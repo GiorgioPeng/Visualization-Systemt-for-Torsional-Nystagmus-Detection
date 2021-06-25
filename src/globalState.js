@@ -65,6 +65,7 @@ const initState = {
         }
     ],
     videoFile: null,
+    remoteVideoSrc: ['', '', '', ''],
     // 这里放置初始状态
 };
 export function GlobalStateProvider({ children }) {
