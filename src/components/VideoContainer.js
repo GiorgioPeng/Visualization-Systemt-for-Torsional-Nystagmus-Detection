@@ -7,8 +7,8 @@ import baseUrl from '../utils/baseURL'
 function VideoContainer(props) {
     const [state,] = useGlobalState()
     // const [loading, setLoading] = React.useState(false) // 后期判断后端是否把视频传过来时使用这个状态
-    const {videoGroup} = props
-    React.useEffect(() => { }, [state.remoteVideoSrc])
+    const { videoGroup } = props
+    React.useEffect(() => { console.log(state.remoteVideoSrc) }, [state.remoteVideoSrc])
     // 这里等着后端传视频url等参数才能继续，先放在这里占着位置
     return (
         <div>
@@ -24,7 +24,7 @@ function VideoContainer(props) {
                             >
                                 <VideoPlayer
                                     videoSrc={state.remoteVideoSrc[index] !== '' ? baseUrl + '/' + state.remoteVideoSrc[index] : ''}
-                                    // videoSrc={'http://202.112.147.176/11-15.avi'}
+                                // videoSrc={'http://202.112.147.176/11-15.avi'}
                                 />
                             </Card>
                         </Col>
