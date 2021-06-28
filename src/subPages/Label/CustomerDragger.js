@@ -27,7 +27,7 @@ function CustomerDragger() {
             if (status === 'done') {
                 message.success(`${info.file.name} 上传成功！`);
                 updateState('videoFile', info.file)
-                updateState('remoteVideoSrc', [info.file.name, '', '', ''])
+                updateState('remoteVideoSrc', info.file.name)
             } else if (status === 'error') {
                 message.error(`${info.file.name} 上传失败！`);
             }

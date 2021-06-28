@@ -7,31 +7,49 @@ import baseUrl from '../utils/baseURL'
 function VideoContainer(props) {
     const [state,] = useGlobalState()
     // const [loading, setLoading] = React.useState(false) // 后期判断后端是否把视频传过来时使用这个状态
-    const { videoGroup } = props
+    const { videoSrc, title } = props
     React.useEffect(() => { console.log(state.remoteVideoSrc) }, [state.remoteVideoSrc])
     // 这里等着后端传视频url等参数才能继续，先放在这里占着位置
     return (
         <div>
-            <Row gutter={[16, 16]}>
-                {
-                    videoGroup.map((title, index) =>
-                        <Col span={12} key={index}>
-                            {/* <b>{title}</b> */}
+            {
+                state[videoSrc] !== '' ?
+                    <Row gutter={[16, 16]}>
+                        <Col span={12}>
+                            <Card
+                                hoverable
+                                style={{ width: '100%', cursor: 'default', textAlign: 'center' }}
+                                title={'原始视频'}
+                            >
+                                <VideoPlayer
+                                    videoSrc={state.remoteVideoSrc !== '' ? baseUrl + '/' + state.remoteVideoSrc : ''}
+                                />
+                            </Card>
+                        </Col>
+                        <Col span={12}>
                             <Card
                                 hoverable
                                 style={{ width: '100%', cursor: 'default', textAlign: 'center' }}
                                 title={title}
                             >
                                 <VideoPlayer
-                                    videoSrc={state.remoteVideoSrc[index] !== '' ? baseUrl + '/' + state.remoteVideoSrc[index] : ''}
-                                // videoSrc={'http://202.112.147.176/11-15.avi'}
+                                    videoSrc={baseUrl + '/' + state[videoSrc]}
                                 />
                             </Card>
                         </Col>
-                    )
-                }
-            </Row>
-        </div>
+                    </Row>
+                    :
+                    <Card
+                        hoverable
+                        style={{ width: '100%', cursor: 'default', textAlign: 'center' }}
+                        title={'原始视频'}
+                    >
+                        <VideoPlayer
+                            videoSrc={state.remoteVideoSrc !== '' ? baseUrl + '/' + state.remoteVideoSrc : ''}
+                        />
+                    </Card>
+            }
+        </div >
     )
 }
 

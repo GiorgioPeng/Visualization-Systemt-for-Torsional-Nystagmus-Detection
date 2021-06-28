@@ -1,19 +1,28 @@
 import React from 'react'
 import { Progress } from 'antd'
-import VideoContainer from '../../components/VideoContainer'
 import ActionButton from './ActionButton'
-
-function index() {
-    const videoGroup = ['原始视频', '剪裁对标后的视频']
+import VideoContainer from '../../components/VideoContainer'
+function Cut() {
+    const videoTitle = '剪裁对标后的视频'
+    const [isClicked, setIsClicked] = React.useState(false);
+    const [loading, setLoading] = React.useState(false);
     return (
         <div>
-            <VideoContainer videoGroup={videoGroup} />
+            <VideoContainer videoSrc={'remoteVideoCenterSrc'} title={videoTitle} />
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px', marginBottom: '30px' }}>
-                <ActionButton />
+                <ActionButton setIsClicked={setIsClicked} isClicked={isClicked} setLoading={setLoading} />
             </div>
-            <Progress type="line" percent={75} status="exception" />
+            <div style={{ display: loading ? 'block' : 'none', textAlign: 'center', color: 'red' }}>
+                <p>程序运行中，请耐心等待。</p>
+                <Progress
+                    type="line"
+                    percent={100}
+                    showInfo={false}
+                    status="active"
+                />
+            </div>
         </div>
     )
 }
 
-export default index
+export default Cut
