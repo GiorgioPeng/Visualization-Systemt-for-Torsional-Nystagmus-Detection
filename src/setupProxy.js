@@ -10,6 +10,10 @@ module.exports = function (app) {
     app.use(createProxyMiddleware('/SegVideo', {
         target: 'http://202.112.147.176:9192',
         changeOrigin: false
+    })),
+    app.use(createProxyMiddleware('/dingbiao', {
+        target: 'http://202.112.147.176:9192',
+        changeOrigin: false
     }))
 
 }

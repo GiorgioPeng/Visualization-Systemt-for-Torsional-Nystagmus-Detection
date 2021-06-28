@@ -8,7 +8,7 @@ function ActionButton(props) {
     const removeuselessframe = async () => {
         setLoading(true)
         setIsClicked(true)
-        console.log('start cut')
+        // console.log('start cut')
         const result = await fetch('/SegVideo/' + state.remoteVideoSrc)
         const detailInfo = await result.json()
         console.log(detailInfo.video_src_path)

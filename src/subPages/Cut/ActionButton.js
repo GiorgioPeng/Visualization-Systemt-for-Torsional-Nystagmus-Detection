@@ -9,10 +9,10 @@ function ActionButton(props) {
         setLoading(true)
         setIsClicked(true)
         console.log('start cut')
-        const result = await fetch('/SegVideo/' + state.remoteVideoSrc)
+        const result = await fetch('/dingbiao/' + state.remoteVideoSrc)
         const detailInfo = await result.json()
         console.log(detailInfo.video_src_path)
-        updateState('remoteVideoUsefulFrameSrc', detailInfo.video_src_path)
+        updateState('remoteVideoCenterSrc', detailInfo.video_src_path)
         setLoading(false)
     }
     return (
@@ -22,7 +22,7 @@ function ActionButton(props) {
                 shape='round'
                 size='large'
                 onClick={cut}
-                disabled={state.remoteVideoUsefulFrameSrc || isClicked}
+                disabled={state.remoteVideoCenterSrc || isClicked}
             >
                 进行剪裁对标
             </Button>
