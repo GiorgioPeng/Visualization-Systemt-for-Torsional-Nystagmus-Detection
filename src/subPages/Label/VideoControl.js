@@ -17,7 +17,18 @@ function VideoControl(props) {
         return url;
     }// 生成一个url供预览视频文件
     return (
-        <div style={{ margin: '10px auto', width: '100%', minHeight: '500px', border: '1px solid', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{
+            margin: '10px auto',
+            maxWidth: '50vw',
+            // overflow: 'hidden',
+            minHeight: '500px',
+            maxHeight: '700px',
+            border: '1px solid',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+        }}
+        >
             {
                 state.videoFile ?
                     <VideoPlayer

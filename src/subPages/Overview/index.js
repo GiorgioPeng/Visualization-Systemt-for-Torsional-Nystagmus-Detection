@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'antd'
-import VideoContainer from '../../components/VideoContainer'
+import VideoContainer from './VideoContainer'
 import DetectTable from './DetectTable'
 function index() {
     const videoGroup = ['原始视频', '去无效帧后的视频', '进行对标后视频', '显示光流后视频']

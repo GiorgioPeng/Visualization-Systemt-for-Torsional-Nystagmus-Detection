@@ -14,6 +14,10 @@ module.exports = function (app) {
     app.use(createProxyMiddleware('/dingbiao', {
         target: 'http://202.112.147.176:9192',
         changeOrigin: false
+    })),
+    app.use(createProxyMiddleware('/lightStream', {
+        target: 'http://202.112.147.176:9192',
+        changeOrigin: false
     }))
 
 }

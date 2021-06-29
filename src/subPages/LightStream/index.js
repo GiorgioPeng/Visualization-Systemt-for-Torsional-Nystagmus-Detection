@@ -1,18 +1,72 @@
 import React from 'react'
-import { Button, Progress } from 'antd'
-import VideoContainer from '../../components/VideoContainer'
+import baseUrl from '../../utils/baseURL'
+import VideoPlayer from '../../components/VideoPlayer'
+import { Row, Col, Card, Progress } from 'antd'
+import ActionButton from './ActionButton'
+import { useGlobalState } from '../../globalState'
 
-function index() {
+function LightStream() {
+    const [state,] = useGlobalState()
     const videoTitle = '光流视频'
+    const [isClicked, setIsClicked] = React.useState(false);
+    const [loading, setLoading] = React.useState(false);
     return (
         <div>
-            <VideoContainer videoSrc={'remoteVideoStreamSrc'} title={videoTitle} />
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '30px', marginBottom: '30px' }}>
-                <Button type="primary" shape={'round'} size={'large'}>显示光流视频</Button>
-            </div>
-            <Progress type="circle" percent={100} status="success" />
+            <Row gutter={[16, 16]}>
+                <Col span={12}>
+                    <Card
+                        hoverable
+                        style={{ width: '100%', cursor: 'default', textAlign: 'center' }}
+                        title={'原始视频'}
+                    >
+                        <VideoPlayer
+                            videoSrc={state.remoteVideoSrc !== '' ? baseUrl + '/' + state.remoteVideoSrc : ''}
+                        />
+                    </Card>
+                </Col>
+                <Col span={12}>
+                    {
+                        state.remoteVideoStreamSrc === '' ?
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    flexDirection: 'column',
+                                    height:'100%',
+                                    width:'100%',
+                                }}>
+                                <ActionButton setIsClicked={setIsClicked} isClicked={isClicked} setLoading={setLoading} />
+                                <div style={{ display: loading ? 'block' : 'none', textAlign: 'center', color: 'red' }}>
+                                    <p>程序运行中，请耐心等待。</p>
+                                    <Progress
+                                        type="line"
+                                        strokeColor={{
+                                            '0%': '#108ee9',
+                                            '100%': '#87d068',
+                                          }}
+                                        percent={100}
+                                        showInfo={false}
+                                        status="active"
+                                    />
+                                </div>
+
+                            </div>
+                            :
+                            <Card
+                                hoverable
+                                style={{ width: '100%', cursor: 'default', textAlign: 'center' }}
+                                title={videoTitle}
+                            >
+                                <VideoPlayer
+                                    videoSrc={baseUrl + '/' + state.remoteVideoStreamSrc}
+                                />
+                            </Card>
+                    }
+                </Col>
+            </Row>
         </div>
     )
 }
 
-export default index
+export default LightStream

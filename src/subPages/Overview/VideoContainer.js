@@ -1,8 +1,8 @@
 import React from 'react'
 import { Row, Col, Card } from 'antd'
-import VideoPlayer from './VideoPlayer'
-import { useGlobalState } from '../globalState'
-import baseUrl from '../utils/baseURL'
+import VideoPlayer from '../../components/VideoPlayer'
+import { useGlobalState } from '../../globalState'
+import baseUrl from '../../utils/baseURL'
 
 function VideoContainer(props) {
     const [state,] = useGlobalState()
