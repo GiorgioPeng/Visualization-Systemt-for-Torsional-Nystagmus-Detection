@@ -16,7 +16,7 @@ function LightStream() {
                 <Col span={12}>
                     <Card
                         hoverable
-                        style={{ width: '100%', cursor: 'default', textAlign: 'center' }}
+                        style={{ width: '100%', cursor: 'default', textAlign: 'center'}}
                         title={'原始视频'}
                     >
                         <VideoPlayer
@@ -33,8 +33,8 @@ function LightStream() {
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     flexDirection: 'column',
-                                    height:'100%',
-                                    width:'100%',
+                                    height: '100%',
+                                    width: '100%',
                                 }}>
                                 <ActionButton setIsClicked={setIsClicked} isClicked={isClicked} setLoading={setLoading} />
                                 <div style={{ display: loading ? 'block' : 'none', textAlign: 'center', color: 'red' }}>
@@ -44,7 +44,7 @@ function LightStream() {
                                         strokeColor={{
                                             '0%': '#108ee9',
                                             '100%': '#87d068',
-                                          }}
+                                        }}
                                         percent={100}
                                         showInfo={false}
                                         status="active"
