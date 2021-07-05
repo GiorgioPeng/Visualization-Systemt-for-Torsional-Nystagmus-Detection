@@ -1,7 +1,0 @@
-.container{
-    display:grid;
-    grid-template-columns: 14% 14% 14% 14% 14% 14% 14%;
-    text-align:center;
-    color:lightslategrey;
-    font-weight: bolder;
-}

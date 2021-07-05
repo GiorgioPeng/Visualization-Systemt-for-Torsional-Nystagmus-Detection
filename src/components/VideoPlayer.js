@@ -28,10 +28,10 @@ function VideoPlayer(props) {
             />
 
             <ControlBar autoHide={false} disableDefaultControls={false}>
-                <ReplayControl seconds={5} order={1.1} />
-                <ReplayControl seconds={10} order={1.2} />
-                <ForwardControl seconds={5} order={1.3} />
-                <ForwardControl seconds={10} order={1.4} />
+                <ReplayControl seconds={0.33} order={1.1} />
+                {/* <ReplayControl seconds={10} order={1.2} /> */}
+                <ForwardControl seconds={0.33} order={1.3} />
+                {/* <ForwardControl seconds={10} order={1.4} /> */}
                 {/* 这几个是调节前后的，两个5秒，两个10秒 */}
                 <PlayToggle />
                 <CurrentTimeDisplay order={4.1} />

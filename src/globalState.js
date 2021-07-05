@@ -8,38 +8,38 @@ const initState = {
     labelTableHeader: [
         {
             title: '开始时间',
-            dataIndex: 'start',
-            key: 'start',
+            dataIndex: '开始时间',
+            key: '开始时间',
         },
         {
             title: '结束时间',
-            dataIndex: 'end',
-            key: 'end',
+            dataIndex: '结束时间',
+            key: '结束时间',
         },
         {
             title: '检查方式',
-            dataIndex: 'method',
-            key: 'method',
+            dataIndex: '检查方式',
+            key: '检查方式',
         },
         {
             title: '眼震',
-            dataIndex: 'nystagmus',
-            key: 'nystagmus',
+            dataIndex: '眼震',
+            key: '眼震',
         },
         {
             title: '旋转',
-            dataIndex: 'rotate',
-            key: 'rotate',
+            dataIndex: '旋转',
+            key: '旋转',
         },
         {
             title: '方向',
-            dataIndex: 'direction',
-            key: 'direction',
+            dataIndex: '方向',
+            key: '方向',
         },
         {
             title: '速度',
-            dataIndex: 'speed',
-            key: 'speed',
+            dataIndex: '速度',
+            key: '速度',
         }
     ],
     detectTableHeader: [
@@ -64,6 +64,7 @@ const initState = {
             ),
         }
     ],
+    illness:'无',
     videoFile: null,
     remoteVideoSrc: '', // 这个是原始视频的访问地址
     remoteVideoUsefulFrameSrc:'',  // 这个是有效帧视频的访问地址

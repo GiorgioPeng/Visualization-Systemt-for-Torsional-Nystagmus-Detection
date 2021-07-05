@@ -1,24 +1,24 @@
 import React from 'react'
-import { Button, Divider,notification } from 'antd'
+import { Button, Divider, notification, message } from 'antd'
 import { useGlobalState } from '../../globalState'
 import RecordAddTable from '../../components/RecordAddTable'
-import './ParamtersBox.css'
+
 // 这个组件用于设置添加的新的记录的各个值
 function ParametersBox(props) {
-    const {videoRef} = props
+    const { videoRef } = props
     const [state, updateState] = useGlobalState()
     const initTempRecord = {
         key: '',
-        start: '',
-        end: '',
-        nystagmus: '',
-        method: '',
-        rotate: '',
-        direction: '',
-        speed: '',
+        开始时间: '',
+        结束时间: '',
+        眼震: '',
+        检查方式: '',
+        旋转: '',
+        方向: '',
+        速度: '',
     }
 
-    const resetTempRecord = ()=>{
+    const resetTempRecord = () => {
         setTempRecord(initTempRecord)
     }
     const [tempRecord, setTempRecord] = React.useState(initTempRecord);
@@ -37,10 +37,14 @@ function ParametersBox(props) {
         }
         let temp = [...state.records]
         console.log(tempRecord)
-        Object.getOwnPropertyNames(tempRecord).every(e => tempRecord[e] !== '') ?
-            temp.push(tempRecord) : alert('有空值,添加失败')
-        updateState('records', temp)
-        resetTempRecord()
+        if (Object.getOwnPropertyNames(tempRecord).some(e => tempRecord[e] === ''))
+            message.error(`所添加记录有空值，请补全。`);
+        else {
+            temp.push(tempRecord)
+            updateState('records', temp)
+            resetTempRecord()
+        }
+
     }
 
     // type参数用于说明是记录开始时间还是结束时间
@@ -66,9 +70,14 @@ function ParametersBox(props) {
     return (
         <div>
             <Divider />
-            <div className="ButtonGroup">
-                <Button type="primary" shape="round" onClick={() => timeRecord('start')}>眼震开始</Button>
-                <Button type="primary" shape="round" danger onClick={() => timeRecord('end')}> 眼震结束</Button>
+            <div style={{
+                height: '50px',
+                display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'center'
+            }}>
+                <Button type="primary" shape="round" onClick={() => timeRecord('开始时间')}>眼震开始</Button>
+                <Button type="primary" shape="round" danger onClick={() => timeRecord('结束时间')}> 眼震结束</Button>
                 <Button type="dashed" shape="round" onClick={addRecord}>添加一行记录</Button>
             </div>
             <Divider />
