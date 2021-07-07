@@ -40,7 +40,7 @@ function App() {
           <Sider trigger={null} className="site-sider" collapsible collapsed={collapsed}>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
               <Menu.Item key="1" icon={<HighlightOutlined />}>
-                <Link to="/label">标注</Link>
+                <Link to="/">标注</Link>
               </Menu.Item>
 
               <SubMenu key="sub1" icon={<ClearOutlined />} title="预处理">
@@ -50,18 +50,13 @@ function App() {
                 <Menu.Item key="3" icon={<ScissorOutlined />}>
                   <Link to="/cut">对标剪裁</Link>
                 </Menu.Item>
-              </SubMenu>
-
-              <SubMenu key="sub2" icon={<EyeOutlined />} title="结果">
                 <Menu.Item key="4" icon={<VideoCameraOutlined />}>
                   <Link to="/lightstream">光流视频</Link>
                 </Menu.Item>
-                <Menu.Item key="5" icon={<AimOutlined />}>
-                  <Link to="/predict">xxxx</Link>
-                </Menu.Item>
               </SubMenu>
 
-              <Menu.Item key="6" icon={<AppstoreOutlined />}>
+
+              <Menu.Item key="5" icon={<AppstoreOutlined />}>
                 <Link to="/overview">结果总览</Link>
               </Menu.Item>
 
@@ -85,11 +80,6 @@ function App() {
               }}
             >
               <Switch>
-
-                <Route path="/label">
-                  <Label />
-                </Route>
-
                 <Route path="/removeuselessframe">
                   <RemoveUselessFrame />
                 </Route>
@@ -102,15 +92,14 @@ function App() {
                   <LightStream />
                 </Route>
 
-                <Route path="/predict">
-                  <Predict />
-                </Route>
-
                 <Route path="/overview">
                   <Overview />
                 </Route>
 
-                <Redirect to="/label"></Redirect>
+                <Route path="/">
+                  <Label />
+                </Route>
+                <Redirect to="/"></Redirect>
               </Switch>
             </Content>
           </Layout>
