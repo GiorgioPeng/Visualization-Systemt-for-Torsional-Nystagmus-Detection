@@ -9,7 +9,6 @@ import {
   HighlightOutlined,
   ClearOutlined,
   EyeOutlined,
-  AimOutlined,
   AppstoreOutlined,
   ScissorOutlined,
 } from '@ant-design/icons'; //这里先随便用了一些图标，后面再调整
@@ -20,10 +19,10 @@ import { BrowserRouter, Switch, Link, Route, Redirect } from 'react-router-dom' 
 
 import Label from './subPages/Label'
 import Overview from './subPages/Overview'
-import Predict from './subPages/Predict'
 import RemoveUselessFrame from './subPages/RemoveUselessFrame'
 import Cut from './subPages/Cut'
 import LightStream from './subPages/LightStream'
+import Location from './subPages/Location'
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu
@@ -60,6 +59,10 @@ function App() {
                 <Link to="/overview">结果总览</Link>
               </Menu.Item>
 
+              <Menu.Item key="6" icon={<EyeOutlined />}>
+                <Link to="/location">眼震定位视频</Link>
+              </Menu.Item>
+
             </Menu>
           </Sider>
 
@@ -94,6 +97,10 @@ function App() {
 
                 <Route path="/overview">
                   <Overview />
+                </Route>
+
+                <Route path="/location">
+                  <Location />
                 </Route>
 
                 <Route path="/">
