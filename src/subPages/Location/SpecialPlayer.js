@@ -13,24 +13,44 @@ import "../../../node_modules/video-react/dist/video-react.css";
 import './progressPointer.css'
 
 function VideoPlayer(props) {
+    const { remoteVideoSrc, section } = props;
     // const { videoRef, videoSrc, videoType } = props
     const specialPlayerRef = React.createRef(null)
     const pointerRef = React.createRef(null)
-    const section = [{ start: 0.2, end: 0.3 }, { start: 1.1, end: 1.5 }]
+    const [durationState, setDurationState] = React.useState(0)
+    // const section = [{ start: 1.9, end: 10 }, { start: 23.1, end: 30.5 }]
+
+    const handleClick = (startTime) => {
+        const pointer = pointerRef.current
+        // 动画时间设置为0，避免跳转的时候显得非常突兀
+        pointer.style.transitionDuration = '0s'
+        const player = specialPlayerRef.current.video.video
+        player.currentTime = startTime
+        setTimeout(() => { pointer.style.transitionDuration = '500ms' }, 0)
+    }
+
     React.useEffect(() => {
         // 这里需要等待后端返回眼震区间，然后生成多个button实现点击跳转
-        // if
-        let position
-        if (specialPlayerRef.current) {
-            const player = specialPlayerRef.current.video.props.player
-            // TODO 这里需要继续进行定位的实现，现在这个循环在暂停的时候会无限重复
-            // while (player.currentTime != player.duration) {
-            //     position = player.currentTime * 100 / player.duration
-            //     pointerRef.current.style.left = parseInt(-1 + position) + '%'
-            //     console.log(position)
-            // }
+        // console.log(specialPlayerRef.current)
+        if (specialPlayerRef.current !== null && pointerRef.current !== null) {
+
+            const player = specialPlayerRef.current.video.video
+            const pointer = pointerRef.current
+
+            player.addEventListener('timeupdate', () => {
+
+                if (durationState === 0) {
+                    setDurationState(player.duration)
+                }
+
+                let percentage = Math.floor((100 / player.duration) *
+                    player.currentTime);
+
+                pointer.style.left = `${percentage - 0.5}%`
+            }, false)
+
         }
-    }, [specialPlayerRef, pointerRef])
+    }, [pointerRef.current])
 
     return (
         <>
@@ -42,7 +62,7 @@ function VideoPlayer(props) {
                 ref={specialPlayerRef}
             >
                 <source
-                    src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+                    src={remoteVideoSrc}
                     // type={videoType}
                     type="video/mp4"
                 />
@@ -69,20 +89,29 @@ function VideoPlayer(props) {
                 }}
             >
                 {
-                    section.map((element, index) => {
-                        return (
-                            <Tooltip placement="top" title={`眼震开始：「${element.start}」,眼震结束：「${element.end}」`}>
-                                <div
-                                    style={{
-                                        backgroundColor: 'red',
-                                        width: (element.end - element.start) * 500 + 'px',
-                                        height: '100%',
-                                        position: 'absolute',
-                                        left: element.start * 500 + 'px'
-                                    }}
-                                />
-                            </Tooltip>
-                        )
+                    section.map((element) => {
+                        if (durationState !== 0) {
+                            let width = (element.end - element.start) / durationState * 100
+                            let left = element.start / durationState * 100
+                            return (
+                                <Tooltip placement="top" title={`眼震开始：「${element.start}」,眼震结束：「${element.end}」`}>
+                                    <div
+                                        style={{
+                                            backgroundColor: 'red',
+                                            width: width + '%',
+                                            height: '100%',
+                                            position: 'absolute',
+                                            left: left + '%',
+                                            cursor: 'pointer'
+                                        }}
+                                        onClick={() => handleClick(element.start)}
+                                    />
+                                </Tooltip>
+                            )
+                        }
+                        else {
+                            return
+                        }
                     })
                 }
                 <div
@@ -95,7 +124,10 @@ function VideoPlayer(props) {
                         position: 'absolute',
                         left: '-1%',
                         // 最大的left是99%
-                        top: '100%'
+                        top: '100%',
+                        transitionProperty: 'left',
+                        transitionDuration: '800ms', // 通过使用动画的方式来使得状态条更加流畅
+                        transformStyle: 'linear'
                     }}
                     ref={pointerRef}
                 />

@@ -1,22 +1,22 @@
 const {createProxyMiddleware} = require('http-proxy-middleware')
-
+const baseUrl = 'http://10.211.55.3'
 // 最简单的形式
 
 module.exports = function (app) {
     app.use(createProxyMiddleware('/file_upload', {
-        target: 'http://202.112.147.176:9192',
+        target: baseUrl+':80',
         changeOrigin: false
     })),
     app.use(createProxyMiddleware('/SegVideo', {
-        target: 'http://202.112.147.176:9192',
+        target: baseUrl+':80',
         changeOrigin: false
     })),
     app.use(createProxyMiddleware('/dingbiao', {
-        target: 'http://202.112.147.176:9192',
+        target: baseUrl+':80',
         changeOrigin: false
     })),
     app.use(createProxyMiddleware('/lightStream', {
-        target: 'http://202.112.147.176:9192',
+        target: baseUrl+':80',
         changeOrigin: false
     }))
 
