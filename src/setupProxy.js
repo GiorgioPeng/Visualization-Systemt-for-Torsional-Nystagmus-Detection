@@ -18,6 +18,9 @@ module.exports = function (app) {
     app.use(createProxyMiddleware('/lightStream', {
         target: baseUrl+':80',
         changeOrigin: false
+    })),
+    app.use(createProxyMiddleware('/detect', {
+        target: baseUrl+':80',
+        changeOrigin: false
     }))
-
 }
