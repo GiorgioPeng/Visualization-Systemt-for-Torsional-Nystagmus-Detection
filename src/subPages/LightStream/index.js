@@ -18,6 +18,7 @@ function LightStream() {
                         hoverable
                         style={{ width: '100%', cursor: 'default', textAlign: 'center'}}
                         title={'原始视频'}
+                        headStyle={{ textAlign: 'center', color: 'skyblue', fontSize: '36px', fontWeight: 'bold' }}
                     >
                         <VideoPlayer
                             videoSrc={state.remoteVideoSrc !== '' ? baseUrl + '/' + state.remoteVideoSrc : ''}
@@ -57,6 +58,7 @@ function LightStream() {
                                 hoverable
                                 style={{ width: '100%', cursor: 'default', textAlign: 'center' }}
                                 title={videoTitle}
+                                headStyle={{ textAlign: 'center', color: 'skyblue', fontSize: '36px', fontWeight: 'bold' }}
                             >
                                 <VideoPlayer
                                     videoSrc={baseUrl + '/' + state.remoteVideoStreamSrc}

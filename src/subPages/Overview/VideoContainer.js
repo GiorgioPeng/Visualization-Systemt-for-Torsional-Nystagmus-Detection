@@ -13,13 +13,14 @@ function VideoContainer(props) {
     return (
         <div>
             <Row gutter={[16, 16]}>
-                {videoGroup.map((title,index) => {
+                {videoGroup.map((title, index) => {
                     return (
                         <Col span={12}>
                             <Card
                                 hoverable
-                                style={{ width: '100%', cursor: 'default', textAlign: 'center' }}
+                                style={{ width: '100%', cursor: 'default' }}
                                 title={title}
+                                headStyle={{ textAlign: 'center', color: 'skyblue', fontSize: '36px', fontWeight: 'bold' }}
                             >
                                 <VideoPlayer
                                     videoSrc={state[videoSrc[index]] !== '' ? baseUrl + '/' + state[videoSrc[index]] : ''}

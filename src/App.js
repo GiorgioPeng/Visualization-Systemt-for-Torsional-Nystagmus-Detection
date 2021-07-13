@@ -38,8 +38,8 @@ function App() {
     <GlobalStateProvider>
       <Layout>
         <BrowserRouter>
-          <Sider trigger={null} className="site-sider" collapsible collapsed={collapsed}>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <Sider theme="light" trigger={null} className="site-sider" collapsible collapsed={collapsed}>
+            <Menu theme="light" mode="inline" defaultSelectedKeys={['1']} style={{ fontSize: '20px', fontWeight: 'bold' }}>
               <Menu.Item key="1" icon={<HighlightOutlined />}>
                 <Link to="/">标注</Link>
               </Menu.Item>

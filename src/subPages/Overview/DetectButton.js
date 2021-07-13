@@ -19,7 +19,7 @@ function DetectButton(props) {
 
         // const result = await fetch('/detect/' + state.remoteVideoSrc)
         
-        const result = await fetch('/detect/11-15封岩右后ＢＰＰＶ左上.mp4')
+        const result = await fetch('/detect/11-15封岩过伸向上坐起向下.mp4')
         try {
             const detailInfo = await result.json()
             console.log(detailInfo.sections)
