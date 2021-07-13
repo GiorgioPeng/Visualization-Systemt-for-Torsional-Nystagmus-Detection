@@ -17,6 +17,8 @@ import { GlobalStateProvider } from "./globalState";
 
 import { BrowserRouter, Switch, Link, Route, Redirect } from 'react-router-dom' // 导入路由组件
 
+import Introduction from './components/Introduction';
+
 import Label from './subPages/Label'
 import Overview from './subPages/Overview'
 import RemoveUselessFrame from './subPages/RemoveUselessFrame'
@@ -115,7 +117,7 @@ function App() {
       </Layout>
 
       <BackTop />
-
+      <Introduction />
     </GlobalStateProvider>
   );
 }

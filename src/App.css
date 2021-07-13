@@ -20,3 +20,7 @@
 .site-layout .site-layout-background {
   background: #fff;
 }
+
+.ant-drawer-title{
+  font-size:40px
+}

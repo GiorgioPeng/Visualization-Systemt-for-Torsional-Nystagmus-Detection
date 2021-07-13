@@ -5,17 +5,17 @@ function DetectButton(props) {
     const [state,] = useGlobalState()
     const { setSections } = props
     const handleDetect = async () => {
-        if (state.remoteVideoSrc === '') {
-            notification['error']({
-                message: '未上传原始视屏文件',
-                description:
-                    '请前往标注界面（左侧第一个）进行原始视屏上传',
-                onClick: () => {
-                    console.log('Notification Clicked!');
-                },
-            });
-            return;
-        }
+        // if (state.remoteVideoSrc === '') {
+        //     notification['error']({
+        //         message: '未上传原始视屏文件',
+        //         description:
+        //             '请前往标注界面（左侧第一个）进行原始视屏上传',
+        //         onClick: () => {
+        //             console.log('Notification Clicked!');
+        //         },
+        //     });
+        //     return;
+        // }
 
         // const result = await fetch('/detect/' + state.remoteVideoSrc)
         
