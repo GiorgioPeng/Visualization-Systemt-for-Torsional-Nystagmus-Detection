@@ -20,6 +20,7 @@ function ActionButton(props) {
         setLoading(true)
         setIsClicked(true)
         console.log('start light stream')
+        // const result = await fetch('/lightStream/' + '11-15封岩过伸向上坐起向下.mp4')
         const result = await fetch('/lightStream/' + state.remoteVideoSrc)
         const detailInfo = await result.json()
         console.log(detailInfo.video_src_path)

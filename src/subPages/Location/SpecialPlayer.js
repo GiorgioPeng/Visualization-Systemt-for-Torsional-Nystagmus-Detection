@@ -11,13 +11,15 @@ import {
 } from 'video-react';
 import "../../../node_modules/video-react/dist/video-react.css";
 import './progressPointer.css'
+import { useGlobalState } from '../../globalState'
 
 function VideoPlayer(props) {
-    const { remoteVideoSrc, section } = props;
+    const { remoteVideoSrc } = props;
     // const { videoRef, videoSrc, videoType } = props
     const specialPlayerRef = React.createRef(null)
     const pointerRef = React.createRef(null)
     const [durationState, setDurationState] = React.useState(0)
+    const [state,] = useGlobalState()
     // const section = [{ start: 1.9, end: 10 }, { start: 23.1, end: 30.5 }]
 
     const handleClick = (startTime) => {
@@ -50,7 +52,7 @@ function VideoPlayer(props) {
             }, false)
 
         }
-    }, [pointerRef.current])
+    }, [pointerRef.current, state.section])
 
     return (
         <>
@@ -89,12 +91,14 @@ function VideoPlayer(props) {
                 }}
             >
                 {
-                    section.map((element) => {
+                    state.sections.map((element) => {
                         if (durationState !== 0) {
-                            let width = (element.end - element.start) / durationState * 100
-                            let left = element.start / durationState * 100
+                            console.log(element)
+                            let width = (element[1] - element[0]) / durationState * 100
+                            let left = element[0] / durationState * 100
+                            // console.log(width,left)
                             return (
-                                <Tooltip placement="top" title={`眼震开始：「${element.start}」,眼震结束：「${element.end}」`}>
+                                <Tooltip placement="top" title={`眼震开始：「${element[0]}」,眼震结束：「${element[1]}」`}>
                                     <div
                                         style={{
                                             backgroundColor: 'red',
@@ -104,13 +108,13 @@ function VideoPlayer(props) {
                                             left: left + '%',
                                             cursor: 'pointer'
                                         }}
-                                        onClick={() => handleClick(element.start)}
+                                        onClick={() => handleClick(element[0])}
                                     />
                                 </Tooltip>
                             )
                         }
                         else {
-                            return
+                            return <></>
                         }
                     })
                 }
