@@ -21,10 +21,23 @@ function ActionButton(props) {
         setIsClicked(true)
         console.log('start light stream')
         // const result = await fetch('/lightStream/' + '11-15封岩过伸向上坐起向下.mp4')
-        const result = await fetch('/lightStream/' + state.remoteVideoSrc)
-        const detailInfo = await result.json()
-        console.log(detailInfo.video_src_path)
-        updateState('remoteVideoStreamSrc', detailInfo.video_src_path)
+
+        try {
+            const result = await fetch('/lightStream/' + state.remoteVideoSrc)
+            const detailInfo = await result.json()
+            console.log(detailInfo.video_src_path)
+            updateState('remoteVideoStreamSrc', detailInfo.video_src_path)
+        } catch (error) {
+            notification['error']({
+                message: '出错了',
+                description:
+                    '请按顺序进行操作。',
+                onClick: () => {
+                    console.log('Notification Clicked!');
+                },
+            });
+            console.log(error.message)
+        }
         setLoading(false)
     }
     return (

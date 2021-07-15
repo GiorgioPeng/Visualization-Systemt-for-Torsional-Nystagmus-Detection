@@ -21,10 +21,22 @@ function ActionButton(props) {
         setLoading(true)
         setIsClicked(true)
         // console.log('start cut')
-        const result = await fetch('/SegVideo/' + state.remoteVideoSrc)
-        const detailInfo = await result.json()
-        console.log(detailInfo.video_src_path)
-        updateState('remoteVideoUsefulFrameSrc', detailInfo.video_src_path)
+        try {
+            const result = await fetch('/SegVideo/' + state.remoteVideoSrc)
+            const detailInfo = await result.json()
+            console.log(detailInfo.video_src_path)
+            updateState('remoteVideoUsefulFrameSrc', detailInfo.video_src_path)
+        } catch (error) {
+            notification['error']({
+                message: '出错了',
+                description:
+                    '请按顺序进行操作。',
+                onClick: () => {
+                    console.log('Notification Clicked!');
+                },
+            });
+            console.log(error.message)
+        }
         setLoading(false)
     }
     return (

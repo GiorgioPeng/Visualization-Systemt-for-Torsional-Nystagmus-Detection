@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tooltip } from 'antd'
+import { Tooltip, Row, Col, Card } from 'antd'
 import {
     Player,
     ControlBar,
@@ -17,18 +17,30 @@ function VideoPlayer(props) {
     const { remoteVideoSrc } = props;
     // const { videoRef, videoSrc, videoType } = props
     const specialPlayerRef = React.createRef(null)
+    const specialPlayerRefAnother = React.createRef(null)
     const pointerRef = React.createRef(null)
     const [durationState, setDurationState] = React.useState(0)
     const [state,] = useGlobalState()
     // const section = [{ start: 1.9, end: 10 }, { start: 23.1, end: 30.5 }]
 
-    const handleClick = (startTime) => {
+    const handleClick = (startTime, endTime) => {
+        console.log(endTime)
         const pointer = pointerRef.current
         // 动画时间设置为0，避免跳转的时候显得非常突兀
         pointer.style.transitionDuration = '0s'
         const player = specialPlayerRef.current.video.video
+        const playerAnother = specialPlayerRefAnother.current.video.video
         player.currentTime = startTime
-        setTimeout(() => { pointer.style.transitionDuration = '500ms' }, 0)
+        playerAnother.currentTime = startTime
+        player.play()
+        playerAnother.play()
+        setTimeout(() => {
+            pointer.style.transitionDuration = '500ms'
+            // while (player.currentTime < endTime) {
+            // }
+            // player.pause()
+            // playerAnother.pause()
+        }, 0)
     }
 
     React.useEffect(() => {
@@ -37,6 +49,7 @@ function VideoPlayer(props) {
         if (specialPlayerRef.current !== null && pointerRef.current !== null) {
 
             const player = specialPlayerRef.current.video.video
+            const playerAnother = specialPlayerRefAnother.current.video.video
             const pointer = pointerRef.current
 
             player.addEventListener('timeupdate', () => {
@@ -51,33 +64,88 @@ function VideoPlayer(props) {
                 pointer.style.left = `${percentage - 0.5}%`
             }, false)
 
+            // 确保两个视频能够同步播放
+            player.addEventListener('pause', () => {
+                playerAnother.pause()
+            }, false)
+
+            player.addEventListener('play', () => {
+                playerAnother.play()
+            }, false)
+
+            playerAnother.addEventListener('pause', () => {
+                player.pause()
+            }, false)
+
+            playerAnother.addEventListener('play', () => {
+                player.play()
+            }, false)
+
         }
     }, [pointerRef.current, state.section])
 
     return (
         <>
-            <Player
-                className={'specialPlayer'}
-                autoPlay
-                fluid={true}
-                playsInline={true}
-                ref={specialPlayerRef}
-            >
-                <source
-                    src={remoteVideoSrc}
-                    // type={videoType}
-                    type="video/mp4"
-                />
-
-
-                <ControlBar autoHide={false} disableDefaultControls={true}>
-                    <PlayToggle />
-                    <ReplayControl seconds={0.33} />
-                    <ForwardControl seconds={0.33} />
-                    <PlaybackRateMenuButton style={{ fontSize: '20px' }} rates={[5, 2, 1.5, 1, 0.5]} />
-                    <VolumeMenuButton vertical />
-                </ControlBar>
-            </Player>
+            <Row gutter={[16, 16]}>
+                <Col span={12}>
+                    <Card
+                        hoverable
+                        style={{ width: '100%', cursor: 'default' }}
+                        title={'对标视频'}
+                        headStyle={{ textAlign: 'center', color: 'skyblue', fontSize: '36px', fontWeight: 'bold' }}
+                    >
+                        <Player
+                            className={'specialPlayer'}
+                            autoPlay
+                            fluid={true}
+                            playsInline={true}
+                            ref={specialPlayerRef}
+                        >
+                            <source
+                                src={remoteVideoSrc[0]}
+                                // type={videoType}
+                                type="video/mp4"
+                            />
+                            <ControlBar autoHide={true} disableDefaultControls={true}>
+                                {/* <PlayToggle />
+                                <ReplayControl seconds={0.33} />
+                                <ForwardControl seconds={0.33} />
+                                <PlaybackRateMenuButton style={{ fontSize: '20px' }} rates={[5, 2, 1.5, 1, 0.5]} />
+                                <VolumeMenuButton vertical /> */}
+                            </ControlBar>
+                        </Player>
+                    </Card>
+                </Col>
+                <Col span={12}>
+                    <Card
+                        hoverable
+                        style={{ width: '100%', cursor: 'default' }}
+                        title={'光流视频'}
+                        headStyle={{ textAlign: 'center', color: 'skyblue', fontSize: '36px', fontWeight: 'bold' }}
+                    >
+                        <Player
+                            className={'specialPlayer'}
+                            autoPlay
+                            fluid={true}
+                            playsInline={true}
+                            ref={specialPlayerRefAnother}
+                        >
+                            <source
+                                src={remoteVideoSrc[1]}
+                                // type={videoType}
+                                type="video/mp4"
+                            />
+                            <ControlBar autoHide={true} disableDefaultControls={true}>
+                                {/* <PlayToggle />
+                                <ReplayControl seconds={0.33} />
+                                <ForwardControl seconds={0.33} />
+                                <PlaybackRateMenuButton style={{ fontSize: '20px' }} rates={[5, 2, 1.5, 1, 0.5]} />
+                                <VolumeMenuButton vertical /> */}
+                            </ControlBar>
+                        </Player>
+                    </Card>
+                </Col>
+            </Row>
             {/* 暂时考虑用蓝色底色，红色覆盖的方式进行实现，可能需要通过鼠标定位的方式进行视频播放时间的控制 */}
             <div
                 style={{
@@ -93,7 +161,7 @@ function VideoPlayer(props) {
                 {
                     state.sections.map((element) => {
                         if (durationState !== 0) {
-                            console.log(element)
+                            // console.log(element)
                             let width = (element[1] - element[0]) / durationState * 100
                             let left = element[0] / durationState * 100
                             // console.log(width,left)
@@ -108,7 +176,7 @@ function VideoPlayer(props) {
                                             left: left + '%',
                                             cursor: 'pointer'
                                         }}
-                                        onClick={() => handleClick(element[0])}
+                                        onClick={() => handleClick(element[0], element[1])}
                                     />
                                 </Tooltip>
                             )
@@ -135,6 +203,7 @@ function VideoPlayer(props) {
                     }}
                     ref={pointerRef}
                 />
+
             </div>
         </>
     )

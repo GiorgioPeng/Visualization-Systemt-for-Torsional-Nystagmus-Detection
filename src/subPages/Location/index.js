@@ -19,9 +19,10 @@ function Location() {
 
     return (
         <div>
+            {/* <DetectTable /> */}
+            <SpecialPlayer remoteVideoSrc={[baseUrl + '/' + state.remoteVideoCenterSrc, baseUrl + '/' + state.remoteVideoStreamSrc]} />
+            {/* <SpecialPlayer remoteVideoSrc={baseUrl + '/' + state.remoteVideoCenterSrc} /> */}
             <DetectButton />
-            <DetectTable />
-            <SpecialPlayer remoteVideoSrc={baseUrl + '/' + state.remoteVideoStreamSrc} />
         </div>
     )
 }
