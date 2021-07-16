@@ -41,5 +41,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://giorgiopeng.github.io/Visualization-Systemt-for-Torsional-Nystagmus-Detection/"
+  "homepage": "https://giorgiopeng.github.io/Visualization-Systemt-for-Torsional-Nystagmus-Detection/",
+  "devDependencies": {
+    "mddir": "^1.1.1"
+  }
 }

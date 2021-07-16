@@ -3,7 +3,7 @@ import { Button, notification } from 'antd'
 import { useGlobalState } from '../../globalState'
 
 function ActionButton(props) {
-    const { isClicked, setIsClicked, setLoading } = props
+    const { isClicked, setLoading } = props
     const [state, updateState,] = useGlobalState()
     const removeuselessframe = async () => {
         if (state.remoteVideoSrc === '') {
@@ -19,7 +19,6 @@ function ActionButton(props) {
         }
 
         setLoading(true)
-        setIsClicked(true)
         // console.log('start cut')
         try {
             const result = await fetch('/SegVideo/' + state.remoteVideoSrc)
@@ -30,7 +29,7 @@ function ActionButton(props) {
             notification['error']({
                 message: '出错了',
                 description:
-                    '请按顺序进行操作。',
+                    '请联系系统管理员',
                 onClick: () => {
                     console.log('Notification Clicked!');
                 },

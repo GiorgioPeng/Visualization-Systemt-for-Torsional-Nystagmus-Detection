@@ -6,17 +6,20 @@ import ActionButton from './ActionButton'
 import { useGlobalState } from '../../globalState'
 
 function LightStream() {
-    const [state,] = useGlobalState()
+    const [state, updateState,] = useGlobalState()
     const videoTitle = '光流视频'
-    const [isClicked, setIsClicked] = React.useState(false);
-    const [loading, setLoading] = React.useState(false);
+    // const [isClicked, setIsClicked] = React.useState(false);
+    // const [loading, setLoading] = React.useState(false);
+    const setLoading = (newvalue) => {
+        updateState('lightstreamLoading', newvalue)
+    }
     return (
         <div>
             <Row gutter={[16, 16]}>
                 <Col span={12}>
                     <Card
                         hoverable
-                        style={{ width: '100%', cursor: 'default', textAlign: 'center'}}
+                        style={{ width: '100%', cursor: 'default', textAlign: 'center' }}
                         title={'原始视频'}
                         headStyle={{ textAlign: 'center', color: 'skyblue', fontSize: '36px', fontWeight: 'bold' }}
                     >
@@ -37,8 +40,8 @@ function LightStream() {
                                     height: '100%',
                                     width: '100%',
                                 }}>
-                                <ActionButton setIsClicked={setIsClicked} isClicked={isClicked} setLoading={setLoading} />
-                                <div style={{ display: loading ? 'block' : 'none', textAlign: 'center', color: 'red' }}>
+                                <ActionButton isClicked={state.lightstreamLoading} setLoading={setLoading} />
+                                <div style={{ display: state.lightstreamLoading ? 'block' : 'none', textAlign: 'center', color: 'red' }}>
                                     <p>程序运行中，请耐心等待。</p>
                                     <Progress
                                         type="line"

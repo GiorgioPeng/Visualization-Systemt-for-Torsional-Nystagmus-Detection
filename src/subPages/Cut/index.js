@@ -6,10 +6,14 @@ import ActionButton from './ActionButton'
 import { useGlobalState } from '../../globalState'
 
 function Cut() {
-    const [state,] = useGlobalState()
+    const [state, updateState,] = useGlobalState()
     const videoTitle = '剪裁对标后的视频'
-    const [isClicked, setIsClicked] = React.useState(false);
-    const [loading, setLoading] = React.useState(false);
+    // const [isClicked, setIsClicked] = React.useState(false);
+    // const [loading, setLoading] = React.useState(false);
+
+    const setLoading = (newvalue) => {
+        updateState('cutLoading', newvalue)
+    }
     return (
         <div>
             <Row gutter={[16, 16]}>
@@ -34,18 +38,18 @@ function Cut() {
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     flexDirection: 'column',
-                                    height:'100%',
-                                    width:'100%',
+                                    height: '100%',
+                                    width: '100%',
                                 }}>
-                                <ActionButton setIsClicked={setIsClicked} isClicked={isClicked} setLoading={setLoading} />
-                                <div style={{ display: loading ? 'block' : 'none', textAlign: 'center', color: 'red' }}>
+                                <ActionButton  isClicked={state.cutLoading} setLoading={setLoading} />
+                                <div style={{ display: state.cutLoading ? 'block' : 'none', textAlign: 'center', color: 'red' }}>
                                     <p>程序运行中，请耐心等待。</p>
                                     <Progress
                                         type="line"
                                         strokeColor={{
                                             '0%': '#108ee9',
                                             '100%': '#87d068',
-                                          }}
+                                        }}
                                         percent={100}
                                         showInfo={false}
                                         status="active"

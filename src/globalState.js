@@ -64,13 +64,17 @@ const initState = {
             ),
         }
     ],
-    illness:'无',
+    illness: '无',
     videoFile: null,
     remoteVideoSrc: '', // 这个是原始视频的访问地址
-    remoteVideoUsefulFrameSrc:'',  // 这个是有效帧视频的访问地址
-    remoteVideoCenterSrc:'',  // 这个是进行对标后视频的访问地址
-    remoteVideoStreamSrc:'',  // 这个是光流视频的访问地址
-    sections: []
+    remoteVideoUsefulFrameSrc: '',  // 这个是有效帧视频的访问地址
+    remoteVideoCenterSrc: '',  // 这个是进行对标后视频的访问地址
+    remoteVideoStreamSrc: '',  // 这个是光流视频的访问地址
+    remoteVideoStreamRGBSrc: '', // 这个是RBG版光流视频的访问地址
+    sections: [],
+    removeuselessframeLoading: false,
+    cutLoading: false,
+    lightstreamLoading: false,
     // 这里放置初始状态
 };
 export function GlobalStateProvider({ children }) {

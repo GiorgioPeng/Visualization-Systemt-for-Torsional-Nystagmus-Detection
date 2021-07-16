@@ -6,10 +6,13 @@ import ActionButton from './ActionButton'
 import { useGlobalState } from '../../globalState'
 
 function RemoveUselessFrame() {
-    const [state,] = useGlobalState()
+    const [state, updateState,] = useGlobalState()
     const videoTitle = '去除无效帧后的视频'
-    const [isClicked, setIsClicked] = React.useState(false);
-    const [loading, setLoading] = React.useState(false);
+    // const [isClicked, setIsClicked] = React.useState(false);
+    // const [loading, setLoading] = React.useState(false);
+    const setLoading = (newvalue) => {
+        updateState('removeuselessframeLoading', newvalue)
+    }
     return (
         <div>
             <Row gutter={[16, 16]}>
@@ -37,8 +40,8 @@ function RemoveUselessFrame() {
                                     height: '100%',
                                     width: '100%',
                                 }}>
-                                <ActionButton setIsClicked={setIsClicked} isClicked={isClicked} setLoading={setLoading} />
-                                <div style={{ display: loading ? 'block' : 'none', textAlign: 'center', color: 'red' }}>
+                                <ActionButton isClicked={state.removeuselessframeLoading} setLoading={setLoading} />
+                                <div style={{ display: state.removeuselessframeLoading ? 'block' : 'none', textAlign: 'center', color: 'red' }}>
                                     <p>程序运行中，请耐心等待。</p>
                                     <Progress
                                         type="line"

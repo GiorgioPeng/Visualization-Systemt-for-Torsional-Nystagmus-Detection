@@ -28,7 +28,7 @@ function DetectButton() {
             notification['error']({
                 message: '出错了',
                 description:
-                    '请按顺序进行操作。',
+                    '请联系系统管理员！',
                 onClick: () => {
                     console.log('Notification Clicked!');
                 },
