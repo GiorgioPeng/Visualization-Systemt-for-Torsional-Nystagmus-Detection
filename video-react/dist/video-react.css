@@ -80,6 +80,14 @@
   content: "";
 }
 
+.video-react-icon-replay-0:before, .video-react .video-react-bezel .video-react-bezel-icon-replay-0:before {
+  content: "退10帧";
+  font-size:12px !important;
+  display:inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .video-react-icon-replay-5:before, .video-react .video-react-bezel .video-react-bezel-icon-replay-5:before {
   content: "";
 }
@@ -90,6 +98,14 @@
 
 .video-react-icon-replay-30:before, .video-react .video-react-bezel .video-react-bezel-icon-replay-30:before {
   content: "";
+}
+
+.video-react-icon-forward-0:before, .video-react .video-react-bezel .video-react-bezel-icon-forward-0:before {
+  content: "进10帧";
+  font-size:12px !important;
+  display:inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .video-react-icon-forward-5:before, .video-react .video-react-bezel .video-react-bezel-icon-forward-5:before {
@@ -605,6 +621,7 @@ body.video-react-full-window .video-react-fullscreen {
   padding: 0;
   position: absolute;
   width: 1px;
+  font-size: 10px !important;
 }
 
 .video-react-no-flex .video-react-control {

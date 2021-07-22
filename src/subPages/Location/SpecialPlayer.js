@@ -38,7 +38,9 @@ function VideoPlayer(props) {
             // pointer.style.transitionDuration = '500ms'
             // while (player.currentTime < endTime) {
             // }
-        }, (endTime - startTime) * 10)
+            player.pause()
+            playerAnother.pause()
+        }, (endTime - startTime) * 2000)
     }
 
     React.useEffect(() => {
@@ -51,8 +53,8 @@ function VideoPlayer(props) {
             // const pointer = pointerRef.current
 
             // 压低播放速度
-            player.playbackRate = 0.1
-            playerAnother.playbackRate = 0.1
+            player.playbackRate = 0.5
+            playerAnother.playbackRate = 0.5
 
             player.addEventListener('timeupdate', () => {
 
@@ -174,6 +176,9 @@ function VideoPlayer(props) {
                     state.sections.map((element) => {
                         if (durationState !== 0) {
                             // console.log(element)
+                            if (element[1] - element[0] < 0.5) {
+                                return <></>
+                            }
                             let width = (element[1] - element[0]) / durationState * 100
                             let left = element[0] / durationState * 100
                             // console.log(width,left)

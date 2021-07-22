@@ -22,8 +22,8 @@ function IllnessSelect() {
             <Radio.Group onChange={modifyIllness} defaultValue={state.illness} buttonStyle="solid">
                 <Row gutter={[16, 24]}>
                     {
-                        illnesses.map(illness =>
-                            <Col span={4}>
+                        illnesses.map((illness, index) =>
+                            <Col span={4} key={index}>
                                 <Radio.Button
                                     style={{
                                         height: '50px',

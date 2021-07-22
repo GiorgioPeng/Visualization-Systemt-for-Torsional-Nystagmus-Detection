@@ -11,6 +11,7 @@ import {
   EyeOutlined,
   AppstoreOutlined,
   ScissorOutlined,
+  HomeOutlined,
 } from '@ant-design/icons'; //这里先随便用了一些图标，后面再调整
 
 import { GlobalStateProvider } from "./globalState";
@@ -25,6 +26,7 @@ import RemoveUselessFrame from './subPages/RemoveUselessFrame'
 import Cut from './subPages/Cut'
 import LightStream from './subPages/LightStream'
 import Location from './subPages/Location'
+import Home from './subPages/Home'
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu
@@ -40,28 +42,31 @@ function App() {
         <BrowserRouter>
           <Sider theme="light" trigger={null} className="site-sider" collapsible collapsed={collapsed}>
             <Menu theme="light" mode="inline" defaultSelectedKeys={['1']} style={{ fontSize: '20px', fontWeight: 'bold' }}>
-              <Menu.Item key="1" icon={<HighlightOutlined />}>
-                <Link to="/">标注</Link>
+              <Menu.Item key="1" icon={<HomeOutlined />}>
+                <Link to="/">首页</Link>
+              </Menu.Item>
+              <Menu.Item key="2" icon={<HighlightOutlined />}>
+                <Link to="/label">标注</Link>
               </Menu.Item>
 
               <SubMenu key="sub1" icon={<ClearOutlined />} title="预处理">
-                <Menu.Item key="2" icon={<DeleteOutlined />}>
+                <Menu.Item key="3" icon={<DeleteOutlined />}>
                   <Link to="/removeuselessframe">去除无用帧</Link>
                 </Menu.Item>
-                <Menu.Item key="3" icon={<ScissorOutlined />}>
+                <Menu.Item key="4" icon={<ScissorOutlined />}>
                   <Link to="/cut">对标剪裁</Link>
                 </Menu.Item>
-                <Menu.Item key="4" icon={<VideoCameraOutlined />}>
+                <Menu.Item key="5" icon={<VideoCameraOutlined />}>
                   <Link to="/lightstream">光流视频</Link>
                 </Menu.Item>
               </SubMenu>
 
 
-              <Menu.Item key="5" icon={<AppstoreOutlined />}>
+              <Menu.Item key="6" icon={<AppstoreOutlined />}>
                 <Link to="/overview">结果总览</Link>
               </Menu.Item>
 
-              <Menu.Item key="6" icon={<EyeOutlined />}>
+              <Menu.Item key="7" icon={<EyeOutlined />}>
                 <Link to="/location">眼震定位视频</Link>
               </Menu.Item>
 
@@ -105,8 +110,11 @@ function App() {
                   <Location />
                 </Route>
 
-                <Route path="/">
+                <Route path="/label">
                   <Label />
+                </Route>
+                <Route path="/">
+                  <Home />
                 </Route>
                 <Redirect to="/"></Redirect>
               </Switch>

@@ -1,38 +1,42 @@
 import React from 'react'
 import { Drawer, Button } from 'antd';
 function Introduction() {
-
     const [visible, setVisible] = React.useState(true);
     const onClose = () => {
         setVisible(false);
     };
     return (
         <Drawer
-            title="智能眼震检测系统"
+            // title="基于人工智能的头晕/眩晕辅助智能诊断系统"
             placement="top"
             closable={false}
             onClose={onClose}
             visible={visible}
             height='95vh'
-            headerStyle={{
-                fontSize: '100px',
-                height: '40vh',
-                fontweight:'bolder',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+            style={{
+                overflow: 'hidden',
             }}
         >
             <div style={{
                 display: 'flex',
-                height: '45vh',
-                flexDirection: 'column',
-                justifyContent: 'space-evenly',
+                height: '75vh',
+                justifyContent: 'center',
                 alignItems: 'center',
-                fontSize: '25px',
-                overflow: 'hidden'
+                fontSize: '80px',
+                fontWeight: 'bolder',
+                textAlign: 'center'
             }}>
-                <p>这里放置版权信息等</p>
+                基于人工智能的头晕/眩晕辅助智能诊断系统
+            </div>
+            <div style={{
+                height: '15vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'flex-end'
+            }}>
+                <p>2021©️北京交通大学</p>
+                <p>版本号：1.0.0</p>
                 <Button
                     type="primary"
                     onClick={onClose}
